@@ -6,7 +6,7 @@ from database.fill_db import fill_db
 
 
 app = FastAPI()
-fill_db()
+# fill_db()
 offerController = OfferController()
 
 origins = [
