@@ -11,7 +11,7 @@ class OfferController:
         # create company objects
         self.companies = createCompanyObjects(self.companies_set)
         #first create emty invalid csv, then remove companies with faulty names(put them in the invalid csv), update list with valid companies
-        create_empty_invalid_records()
+        # create_empty_invalid_records()
         self.companies = validateCompany(self.companies)
         self.user = None
         self.offerRanker = None

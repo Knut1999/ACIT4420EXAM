@@ -23,11 +23,11 @@ def getOffers():
         offers.append(offer)
     return offer
 
-def create_empty_invalid_records():
-    csv_file_path = 'invalid/invalid_records.csv'
-    with open(csv_file_path, mode='w', newline='') as file:
-        # Create a csv.writer object
-        writer = csv.writer(file)
+# def create_empty_invalid_records():
+#     csv_file_path = 'invalid/invalid_records.csv'
+#     with open(csv_file_path, mode='w', newline='') as file:
+#         # Create a csv.writer object
+#         writer = csv.writer(file)
 def errorMessageToCSV(ids, errortype, error):
     if readInvalidRecordsIds(ids):
         return
