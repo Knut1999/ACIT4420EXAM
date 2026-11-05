@@ -1,4 +1,2 @@
 ids,errortype,error
 "[226, 239]",Invalid company name,NONAME
-229,['Invalid Departure time'],['25:90']
-238,['Travel date is in the past'],['2025-11-01']
