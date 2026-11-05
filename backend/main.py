@@ -1,11 +1,13 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from backend.fill_db import fill_db
+from Controller import Controller
+from database.fill_db import fill_db
 
 
-fill_db()
 app = FastAPI()
+fill_db()
+controller = Controller()
 
 origins = [
     "http://localhost:5000",
@@ -25,8 +27,16 @@ def read_root():
 
 class Item(BaseModel):
     destination: str
-    budget: str 
+    budgetType: str 
+    budgetSum: float
+    preferredDepartureTime: str
+    
 
 @app.post("/items/")
 async def create_item(item: Item):
-    return item
+    offers = controller.websiteInputs(item.destination,item.budgetType,item.budgetSum, item.preferredDepartureTime)
+    result = []
+    for offer in offers:
+        result.append(offer.__dict__)
+
+    return result
