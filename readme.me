@@ -1,0 +1,4 @@
+source .venv/bin/activate
+run frontend
+python -m http.server 5000
+backend: uvicorn main:app --reload --port 8000
