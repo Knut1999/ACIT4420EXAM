@@ -12,8 +12,10 @@ class OfferRanker:
         #filtered by budget, so the list below does not have offer above budget
         self.validRankedOffersList = self.filterByBudget(self.rankedOffersList)
         # we need to find min and max values for later
-        self.maxPrice = self.findMaxPrice(self.validRankedOffersList)
-        self.maxPrice = getTravelPrice(self.destination) * 1.6
+        self.maxPrice = self.findMinOrMaxPrice(self.validRankedOffersList, True)
+        self.maxDuration = self.findMinOrMaxDuration(self.validRankedOffersList, True)        
+        self.minPrice = self.findMinOrMaxPrice(self.validRankedOffersList, False)
+        self.minDuration = self.findMinOrMaxDuration(self.validRankedOffersList, False)
         #defult values
         self.w_price = 0.25
         self.w_duration = 0.25
@@ -22,16 +24,24 @@ class OfferRanker:
         self.calculateScores()
         self.sortOffers()
 
-    def findMaxPrice(self, validRankedOffersList:list[Offer]):
+    def findMinOrMaxPrice(self, validRankedOffersList:list[Offer], Max:bool):
         allPrices = []
         for offer in validRankedOffersList:
             allPrices.append(offer.price)
-        return max(allPrices)    
-    def findMaxDuration(self, validRankedOffersList:list[Offer]):
+        if(Max == True):
+            return max(allPrices)
+        if(Max == False):
+            return min(allPrices)
+        return
+    def findMinOrMaxDuration(self, validRankedOffersList:list[Offer], Max:bool):
         allDurations = []
         for offer in validRankedOffersList:
             allDurations.append(offer.duration)
-        return max(allDurations)    
+        if(Max == True):
+            return max(allDurations)
+        if(Max == False):
+            return min(allDurations)
+        return
 
     def filterByBudget(self, rankedOffersList):
         updatetList = []
@@ -59,7 +69,7 @@ class OfferRanker:
         return allOffers
 
     def getRankedOffers(self):
-        return self.rankedOffersList
+        return self.validRankedOffersList
 
 
     def calculateScores(self):
@@ -77,7 +87,9 @@ class OfferRanker:
                 self.w_flexibility * self.F(offer))
 
     def P(self, offer:Offer):
-        return 1 - (offer.price / self.maxPrice) 
+        if self.maxPrice == self.minPrice:
+            return 1.0
+        return ((self.maxPrice - offer.price) / (self.maxPrice - self.minPrice))
     def D(self, offer:Offer):
         return 1 - (offer.duration / self.maxDuration) 
     def T(self, offer:Offer):
