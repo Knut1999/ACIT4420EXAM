@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <h1>BUS BIDDER</h1>
+        <label for="destinations">Travel from Barcelona to -> </label>
+        <select name="destinations" id="destinations">
+            <option value="Alicante">Alicante</option>
+            <option value="Barcelona">Barcelona</option>
+            <option value="Bilbao">Bilbao</option>
+            <option value="Cadiz">Cadiz</option>
+            <option value="Cordoba">Cordoba</option>
+            <option value="Granada">Granada</option>
+            <option value="Malaga">Malaga</option>
+            <option value="Murcia">Murcia</option>
+            <option value="Salamanca">Salamanca</option>
+            <option value="San Sebastian">San Sebastian</option>
+            <option value="Santiago de Compostela">Santiago de Compostela</option>
+            <option value="Seville">Seville</option>
+            <option value="Toledo">Toledo</option>
+            <option value="Valencia">Valencia</option>
+            <option value="Zaragoza">Zaragoza</option>
+        </select>
+        <br>
+        <label for="budgetType">Choose budget type</label>
+        <select name="budgetType" id="budgetType" onchange="moveSliders()">
+        <script src="moveSliders.js"></script>
+            <option value="Budget traveller">Budget traveller</option>
+            <option value="Business traveller">Business traveller</option>
+            <option value="Flexibility-focused tourist">Flexibility-focused tourist</option>
+            <option value="Environment-focused traveller">Environment-focused traveller</option>
+        </select>
+        
+        <label for="budgetSum">Budget:</label>
+        <input type="number" id="budgetSum" name="budgetSum"><br><br>
+
+        <label for="preferredDepartureTime">Choose departure time</label>
+        <input type="time" id="preferredDepartureTime" name="preferredDepartureTime" value="12:50">
+
+        <label for="priceWeight">Price</label>
+        <input type="range" id="priceWeight" min="0" max="100" value="80">
+
+        <label for="durationWeight">Duration</label>
+        <input type="range" id="durationWeight" min="0" max="100" value="10">
+
+        <label for="timeWeight">Departure time</label>
+        <input type="range" id="timeWeight" min="0" max="100" value="30">
+
+        <label for="flexibilityWeight">Flexibility</label>
+        <input type="range" id="flexibilityWeight" min="0" max="100" value="10">
+
+        <label for="ratingWeight">Customer rating</label>
+        <input type="range" id="ratingWeight" min="0" max="100" value="10">
+
+        <label for="transfersWeight">Number of transfers</label>
+        <input type="range" id="transfersWeight" min="0" max="100" value="10">
+
+        <label for="environmentWeight">Environmental impact</label>
+        <input type="range" id="environmentWeight" min="0" max="100" value="10">
+
+        <br>
+        <button type="button" value="Submit" onclick="search()">Search</button>
+        <script src="search.js"></script>
+
+        <br>
+         <!--https://www.youtube.com/watch?v=XmdOZ5NSqb8&list=PL-51WBLyFTg1l3K0aTH0uX6PzgaLfzJBK used as insperation-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+            th{ 
+                color:#fff;
+                    }
+        </style>
+       
+        <table class="table table-striped">
+            <tr class="bg-info">
+                <th>Rank</th>
+                <th>Company</th>
+                <th>Destination</th>
+                <th>Travel date</th>
+                <th>Departure</th>
+                <th>Duration</th>
+                <th>Arrival</th>
+                <th>Price</th>
+                <th>Transfers</th>
+                <th>Luggage</th>
+                <th>Changeability</th>
+                <th>Refundability</th>
+                <th>Available seats</th>
+                <th>Customer rating</th>
+                <th>Environmental measure</th>
+                <th>Score</th>
+            </tr>
+            <tbody id="offersTable"></tbody>
+        </table>
+
+            <tbody id="myTable">
+                
+            </tbody>
+        </table>
+    </body>
+</html>
+<script src="table.js"></script>
