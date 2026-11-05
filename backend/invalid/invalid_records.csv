@@ -1,2 +1,3 @@
 ids,errortype,error
 "[226, 239]",Invalid company name,NONAME
+229,['Invalid Departure time'],['25:90']

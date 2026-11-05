@@ -1,9 +1,9 @@
 from datetime import date, datetime
 
 from validation.standaloneFunctionsValidation import validateCustomerRating, validateDate, validateDepartureAndArrival, validateDestination, validateNonNegativeFloat, validateNonNegativeInteger
-from classes import Company, Offer
+from backend.offer.classes import Company, Offer
 from database.database import Database
-from standaloneFunctions import errorMessageToCSV, getCompanies
+from backend.offer.standaloneFunctions import errorMessageToCSV, getCompanies
 
 def validateCompany(companyList: list[Company]) -> list[Company]:
     validCompaniesStr = getCompanies()

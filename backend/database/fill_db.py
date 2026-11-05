@@ -3,7 +3,7 @@ import random
 import sqlite3
 import csv
 from database.generateData import generateCaminoExpress, generateCostaLink, generateNocheVia, generateSolRuta, generateVerdeBus, transferErrorRecordsToDatabase
-from standaloneFunctions import getDestinations, getTravelTimes, getTravelPrices
+from backend.offer.standaloneFunctions import getDestinations, getTravelTimes, getTravelPrices
 #existing sql, we delete existing data here, and generate new below
 conn = sqlite3.connect("database/dataset.db")
 cursor = conn.cursor()

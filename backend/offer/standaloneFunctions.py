@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from classes import Company
+from backend.offer.classes import Company, Offer
 import csv
 
 import sqlite3
@@ -126,3 +126,70 @@ def dateStrToDate(date):
 
 def timeDelta(time1, time2):
     return abs(time1 - time2).total_seconds() / 3600
+
+def findMinOrMaxPrice(validRankedOffersList:list[Offer], Max:bool):
+    allPrices = []
+    for offer in validRankedOffersList:
+        allPrices.append(offer.price)
+    if(Max == True):
+        return max(allPrices)
+    if(Max == False):
+        return min(allPrices)
+    return
+def findMinOrMaxDuration(validRankedOffersList:list[Offer], Max:bool):
+    allDurations = []
+    for offer in validRankedOffersList:
+        allDurations.append(offer.duration)
+    if(Max == True):
+        return max(allDurations)
+    if(Max == False):
+        return min(allDurations)
+    return
+def findMinOrMaxWait(validRankedOffersList:list[Offer],preferredDepartureTime, Max:bool):
+    deltaList = []
+    for offer in validRankedOffersList:
+        offerDepartureTime = timeStrToHour(offer.departureTime)
+        delta = timeDelta(offerDepartureTime, preferredDepartureTime)
+        deltaList.append(delta)
+    if(Max == True):
+        return max(deltaList)
+    if(Max == False):
+        return min(deltaList)
+    return
+def findMinOrMaxRating(validRankedOffersList:list[Offer], Max:bool):
+    allRatings = []
+    for offer in validRankedOffersList:
+        allRatings.append(offer.customerRating)
+    if(Max == True):
+        return max(allRatings)
+    if(Max == False):
+        return min(allRatings)
+    return
+def findMinOrMaxTransfers(validRankedOffersList:list[Offer], Max:bool):
+    allTransfers = []
+    for offer in validRankedOffersList:
+        allTransfers.append(offer.transfers)
+    if(Max == True):
+        return max(allTransfers)
+    if(Max == False):
+        return min(allTransfers)
+    return
+def findMinOrMaxEnvironment(validRankedOffersList:list[Offer], Max:bool):
+    allEnvironment = []
+    for offer in validRankedOffersList:
+        allEnvironment.append(offer.environmentalMeasure)
+    if(Max == True):
+        return max(allEnvironment)
+    if(Max == False):
+        return min(allEnvironment)
+    return
+
+def normalizeWeights(weights):
+    total = sum(weights)
+    #So we find the sum, then just divide each number at the sum
+    #then every weight will be between 0 and 1
+    if(total == 0):
+        return [1/7,1/7,1/7,1/7,1/7,1/7,1/7]
+    for i in range(7):
+        weights[i] = weights[i] / total
+    return weights

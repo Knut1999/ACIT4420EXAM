@@ -1,10 +1,10 @@
-from OfferRanker import OfferRanker
-from standaloneFunctions import getOffers, createCompanyObjects, create_empty_invalid_records
+from backend.offer.OfferRanker import OfferRanker
+from backend.offer.standaloneFunctions import getOffers, createCompanyObjects, create_empty_invalid_records, normalizeWeights
 from validation.validation import validateCompany, validateOffers
-from classes import User
+from backend.offer.classes import User
 from database.database import Database
 
-class Controller:
+class OfferController:
     def __init__(self):
         #list of strings of the company names from static Database function
         self.companies_set = Database.getCompanies()
@@ -18,12 +18,14 @@ class Controller:
         self.destination = None
         self.preferredDepartureTime = None
         self.budget = None
+        self.weights = None
         
 
-    def websiteInputs(self, destination, budgetType, budget, preferredDepartureTime):
+    def websiteInputs(self, destination, budgetType, budget, preferredDepartureTime, weights):
         self.destination = destination
         self.preferredDepartureTime = preferredDepartureTime
         self.budget = budget
+        self.weights = normalizeWeights(weights)
         self.user = User(destination, budgetType, budget)
         self.generateOffers()
         return self.offerRanker.getRankedOffers()
@@ -36,7 +38,7 @@ class Controller:
         self.rankOffers()
 
     def rankOffers(self):
-        self.offerRanker = OfferRanker(self.companies, self.destination, self.preferredDepartureTime, self.budget)
+        self.offerRanker = OfferRanker(self.companies, self.destination, self.preferredDepartureTime, self.budget, self.weights)
 
     
         

@@ -1,7 +1,7 @@
 import csv
 from datetime import date, datetime, timedelta
 import random
-from standaloneFunctions import getTravelTimes, getTravelPrices, dateStrToDate, timeStrToHour
+from backend.offer.standaloneFunctions import getTravelTimes, getTravelPrices, dateStrToDate, timeStrToHour
 
 travel_times = getTravelTimes()
 travel_price = getTravelPrices()
@@ -11,11 +11,11 @@ def generateSolRuta(destination):
     company = "SolRuta"
     #we have destination as input
     travelDate = (str(date.today()))
-    departureStr = random.choice(["11:00", "12:00", "13:00"])
+    departureStr = random.choice(["11:00", "12:00", "13:00", "14:00", "15:00"])
     departure = timeStrToHour(departureStr)
     duration = travel_times[destination] * random.choice([0.5,0.6,0.4])
     arrivalTime = departure + timedelta(hours=duration)
-    price = travel_price[destination]
+    price = travel_price[destination] * random.choice([0.5,0.8,0.9])
     if(duration > 5): 
         transfers = random.choice([2,4])
     else: 
@@ -25,7 +25,7 @@ def generateSolRuta(destination):
     refundability = "NONE"
     available_seats = random.randint(10,40)
     customer_rating = round(random.uniform(3, 5), 1)
-    environmental_measure = 8
+    environmental_measure = random.choice([5,6,7])
     return {
         "company": company,
         "destination": destination,
@@ -44,13 +44,17 @@ def generateSolRuta(destination):
     }
 def generateCaminoExpress(destination):
     company = "Camino Express"
+    fastPaths = ["Barcelona","Valencia","Seville","Malaga","Bilbao","Zaragoza"]
     #we have destination as input
     travelDate = (str(date.today()))
     departureStr = random.choice(["11:00", "12:00", "13:00","14:00", "15:00", "16:00","17:00", "18:00", "19:00","20:00", "21:00", "22:00"])
     departure = datetime.strptime(departureStr, "%H:%M")
-    duration = travel_times[destination] * 0.8
+    if(destination in fastPaths):
+        duration = travel_times[destination] * random.choice([0.6,0.7,0.65])
+    else:
+        duration = travel_times[destination] * random.choice([1.1,1.9,1.2])
     arrivalTime = departure + timedelta(hours=duration)
-    price = travel_price[destination] * 1.2
+    price = travel_price[destination] * random.choice([1.2,1.3,1.5])
     transfers = random.choice([0, 0, 0, 1])
     luggage_allowance = 1
     changeability = "LIMITED"
@@ -90,12 +94,12 @@ def generateCostaLink(destination):
     if(destination in coastal_destinations): 
         duration = travel_times[destination] * 0.6
         transfers = 0
-        price = travel_price[destination] * 0.6
+        price = travel_price[destination]  * random.choice([0.6,0.7,0.5])
         available_seats = random.randint(20,50)
     else:
         duration = travel_times[destination]
         transfers = random.choice([2,5])
-        price = travel_price[destination] * 1.6
+        price = travel_price[destination] * random.choice([1.6,1.7,1.5])
         available_seats = random.randint(0,15)
     
     arrivalTime = departure + timedelta(hours=duration)
@@ -138,7 +142,7 @@ def generateVerdeBus(destination):
     refundability = "LIMITED"
     available_seats = random.randint(10, 35)
     customer_rating = round(random.uniform(2.0, 4.0), 1)
-    environmental_measure = 3
+    environmental_measure = random.choice([8,9,10])
     return {
         "company": company,
         "destination": destination,
@@ -163,14 +167,14 @@ def generateNocheVia(destination):
     departure = datetime.strptime(departureStr, "%H:%M")
     duration = travel_times[destination] * random.choice([1.1,1.2,1.3])
     arrivalTime = departure + timedelta(hours=duration) 
-    price = travel_price[destination] * 1.3
+    price = travel_price[destination] * random.choice([1.4,1.5,1.6])
     if(duration > 5): 
         transfers = random.choice([2,4])
     else: 
         transfers = random.choice([1,2])
     luggage_allowance = 2
-    changeability = "LIMITED"
-    refundability = "NONE"
+    changeability = "FULL"
+    refundability = "FULL"
     available_seats = random.randint(10, 35)
     customer_rating = round(random.uniform(2, 5.0), 1)
     environmental_measure = 6
