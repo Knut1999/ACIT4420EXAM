@@ -7,13 +7,13 @@ class OfferRanker:
         self.destination = destination
         self.preferredDepartureTime = timeStrToHour(preferredDepartureTime)
         self.budget = budget
-        # Maximum reference values are based on the highest multipliers
-        # used by the company data generators for the selected destination.
-        self.maxDuration = getTravelTime(self.destination) * 1.3
-        self.maxPrice = getTravelPrice(self.destination) * 1.6
         #we could filter by budget in fillAllOffers(), but for readability, we dont
         self.rankedOffersList:list[Offer] = self.fillAllOffers()
-        self.rankedOffersList = self.filterByBudget(self.rankedOffersList)
+        #filtered by budget, so the list below does not have offer above budget
+        self.validRankedOffersList = self.filterByBudget(self.rankedOffersList)
+        # we need to find min and max values for later
+        self.maxPrice = self.findMaxPrice(self.validRankedOffersList)
+        self.maxPrice = getTravelPrice(self.destination) * 1.6
         #defult values
         self.w_price = 0.25
         self.w_duration = 0.25
@@ -21,6 +21,17 @@ class OfferRanker:
         self.w_flexibility = 0.25
         self.calculateScores()
         self.sortOffers()
+
+    def findMaxPrice(self, validRankedOffersList:list[Offer]):
+        allPrices = []
+        for offer in validRankedOffersList:
+            allPrices.append(offer.price)
+        return max(allPrices)    
+    def findMaxDuration(self, validRankedOffersList:list[Offer]):
+        allDurations = []
+        for offer in validRankedOffersList:
+            allDurations.append(offer.duration)
+        return max(allDurations)    
 
     def filterByBudget(self, rankedOffersList):
         updatetList = []
