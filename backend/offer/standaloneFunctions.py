@@ -24,14 +24,14 @@ def getOffers():
     return offer
 
 def create_empty_invalid_records():
-    csv_file_path = 'invalid\\invalid_records.csv'
+    csv_file_path = 'backend/invalid/invalid_records.csv'
     with open(csv_file_path, mode='w', newline='') as file:
         # Create a csv.writer object
         writer = csv.writer(file)
 def errorMessageToCSV(ids, errortype, error):
     if readInvalidRecordsIds(ids):
         return
-    csv_file_path = 'invalid\\invalid_records.csv'
+    csv_file_path = 'backend/invalid/invalid_records.csv'
     #https://www.geeksforgeeks.org/python/writing-csv-files-in-python/ used as insperation
     data = [{'ids': ids, 'errortype': errortype, 'error': error}]
     with open(csv_file_path, 'a', newline='') as csvfile:
@@ -44,7 +44,7 @@ def errorMessageToCSV(ids, errortype, error):
         writer.writerows(data)
 
 def readInvalidRecordsIds(id):
-    csv_file_path = 'invalid\\invalid_records.csv'
+    csv_file_path = 'backend/invalid/invalid_records.csv'
     try:
         with open(csv_file_path, 'r', newline='') as csvfile:
             reader = csv.DictReader(csvfile)

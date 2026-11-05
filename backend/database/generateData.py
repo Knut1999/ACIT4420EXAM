@@ -195,7 +195,7 @@ def generateNocheVia(destination):
         "environmental_measure": environmental_measure
     }
 def transferErrorRecordsToDatabase():
-    with open('database/errorValues.csv', newline='') as csvfile:
+    with open('backend/database/errorValues.csv', newline='') as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar='"')
         next(reader)
         dictList = []
