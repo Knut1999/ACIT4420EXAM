@@ -1,0 +1,16 @@
+id,company,destination,travel_date,departure,duration,arrival_time,price,transfers,luggage_allowance,changeability,refundability,available_seats,customer_rating,environmental_measure,error_description
+1,NONAME,Barcelona,2026-12-24,08:00,5.6,13:36,42.0,0,1,LIMITED,NONE,21,4.8,8,Unknown company
+2,Camino Express,Atlantis,2026-12-24,12:00,3.2,15:12,24.0,0,1,LIMITED,NONE,33,4.2,8,Unknown destination
+3,CostaLink,Valencia,2026-10-29,09:00,4.0,13:00,35.0,0,1,LIMITED,NONE,18,4.5,7,Travel date is in the past
+4,VerdeBus,Seville,2026-12-24,25:90,5.0,14:00,30.0,0,1,LIMITED,NONE,20,4.4,6,Invalid departure time format
+5,SolRuta,Malaga,2026-12-24,10:00,-2.0,08:00,28.0,0,1,LIMITED,NONE,25,4.1,5,Negative journey duration
+6,NocheVia,Granada,2026-12-24,20:00,4.0,00:00,-15.0,0,1,LIMITED,NONE,16,4.6,9,Negative price
+7,Camino Express,Bilbao,2026-12-24,08:00,5.0,13:00,32.0,-1,1,LIMITED,NONE,19,4.3,7,Negative number of transfers
+8,CostaLink,Alicante,2026-12-24,16:00,4.0,20:00,31.0,0,-2,LIMITED,NONE,22,4.5,6,Negative luggage allowance
+9,VerdeBus,Cordoba,2026-12-24,12:00,4.0,16:00,29.0,0,1,UNKNOWN,NONE,17,4.2,5,Unknown changeability value
+10,NocheVia,Murcia,2026-12-24,22:00,6.0,04:00,38.0,0,1,LIMITED,NONE,0,4.7,8,No available seats
+11,SolRuta,Toledo,2026-12-24,08:00,1.0,09:00,18.0,0,1,LIMITED,NONE,12,6.5,4,Customer rating outside the allowed scale
+12,Camino Express,Cadiz,2026-12-24,10:00,5.0,15:00,27.0,0,1,LIMITED,NONE,14,4.4,-3,Negative environmental measure
+12,Camino Express,Cadiz,2026-12-24,10:00,"five",15:00,27.0,0,1,LIMITED,NONE,14,4.4,-3,Duration is wrong type
+13,CostaLink,Barcelona,2025-11-01,10:00,3.0,13:00,25.0,0,1,LIMITED,NONE,20,4.5,8,Travel date is in the past
+14,NONAME,Barcelona,2026-12-24,08:00,5.6,13:36,42.0,0,1,LIMITED,NONE,21,4.8,8,Unknown company
