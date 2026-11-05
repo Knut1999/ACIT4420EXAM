@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from backend.offer.OfferController import OfferController
-from backend.database.fill_db import fill_db
+from offer.OfferController import OfferController
+from database.fill_db import fill_db
 
 
 app = FastAPI()

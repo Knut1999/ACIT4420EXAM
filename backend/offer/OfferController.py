@@ -1,8 +1,8 @@
-from backend.offer.OfferRanker import OfferRanker
-from backend.offer.standaloneFunctions import getOffers, createCompanyObjects, create_empty_invalid_records, normalizeWeights
-from backend.validation.validation import validateCompany, validateOffers
-from backend.offer.classes import User
-from backend.database.database import Database
+from offer.OfferRanker import OfferRanker
+from offer.standaloneFunctions import getOffers, createCompanyObjects, create_empty_invalid_records, normalizeWeights
+from validation.validation import validateCompany, validateOffers
+from offer.classes import User
+from database.database import Database
 
 class OfferController:
     def __init__(self):

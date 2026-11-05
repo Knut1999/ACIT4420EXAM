@@ -1,4 +1,4 @@
-from backend.database.database import Database
+from database.database import Database
 
 class User:
     def __init__(self, destination:str, budgetType:str, budgetSum:float):

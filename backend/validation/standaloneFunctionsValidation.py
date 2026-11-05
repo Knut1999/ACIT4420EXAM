@@ -1,7 +1,7 @@
 from datetime import date, datetime
 
-from backend.offer.classes import Offer
-from backend.offer.standaloneFunctions import getDestinations
+from offer.classes import Offer
+from offer.standaloneFunctions import getDestinations
 
 #all the functions return the error type and the specific error
 def validateDestination(offer):

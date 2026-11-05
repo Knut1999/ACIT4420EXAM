@@ -1,5 +1,5 @@
-from backend.offer.standaloneFunctions import findMinOrMaxRating, findMinOrMaxTransfers, timeStrToHour, timeDelta, findMinOrMaxWait,findMinOrMaxDuration,findMinOrMaxPrice,findMinOrMaxEnvironment
-from backend.offer.classes import Company, Offer
+from offer.standaloneFunctions import findMinOrMaxRating, findMinOrMaxTransfers, timeStrToHour, timeDelta, findMinOrMaxWait,findMinOrMaxDuration,findMinOrMaxPrice,findMinOrMaxEnvironment
+from offer.classes import Company, Offer
 
 class OfferRanker:
     def __init__(self, companies:list[Company], destination:str, preferredDepartureTime:str, budget:float, weights:list[float]):

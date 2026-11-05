@@ -1,6 +1,6 @@
 import sqlite3
 class Database:
-    db_path = "backend/database/dataset.db"
+    db_path = "database/dataset.db"
 
     @staticmethod
     def getCompanies():
