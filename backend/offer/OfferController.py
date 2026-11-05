@@ -1,5 +1,5 @@
 from offer.OfferRanker import OfferRanker
-from offer.standaloneFunctions import getOffers, createCompanyObjects, create_empty_invalid_records, normalizeWeights
+from offer.standaloneFunctions import getOffers, createCompanyObjects, normalizeWeights
 from validation.validation import validateCompany, validateOffers
 from offer.classes import User
 from database.database import Database
