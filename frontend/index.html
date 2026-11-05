@@ -22,13 +22,20 @@
             <option value="Zaragoza">Zaragoza</option>
         </select>
         <br>
-        <label for="budget">Choose budget </label>
-        <select name="budget" id="budget">
+        <label for="budgetType">Choose budget type</label>
+        <select name="budgetType" id="budgetType">
             <option value="Budget traveller">Budget traveller</option>
             <option value="Business traveller">Business traveller</option>
             <option value="Flexibility-focused tourist">Flexibility-focused tourist</option>
             <option value="Environment-focused traveller">Environment-focused traveller</option>
         </select>
+        
+        <label for="budgetSum">Budget:</label>
+        <input type="number" id="budgetSum" name="budgetSum"><br><br>
+
+        <label for="preferredDepartureTime">Choose departure time</label>
+        <input type="time" id="preferredDepartureTime" name="preferredDepartureTime" value="12:50">
+
         <br>
         <button type="button" value="Submit" onclick="search()">Search</button>
         <script src="search.js"></script>
@@ -43,13 +50,26 @@
         </style>
        
         <table class="table table-striped">
-            <tr  class="bg-info">
+            <tr class="bg-info">
                 <th>Rank</th>
                 <th>Company</th>
-                <th>Price</th>
-                <th>Depature</th>
+                <th>Destination</th>
+                <th>Travel date</th>
+                <th>Departure</th>
+                <th>Duration</th>
                 <th>Arrival</th>
+                <th>Price</th>
+                <th>Transfers</th>
+                <th>Luggage</th>
+                <th>Changeability</th>
+                <th>Refundability</th>
+                <th>Available seats</th>
+                <th>Customer rating</th>
+                <th>Environmental measure</th>
+                <th>Score</th>
             </tr>
+            <tbody id="offersTable"></tbody>
+        </table>
 
             <tbody id="myTable">
                 
