@@ -5,7 +5,7 @@ import csv
 from database.generateData import generateCaminoExpress, generateCostaLink, generateNocheVia, generateSolRuta, generateVerdeBus, transferErrorRecordsToDatabase
 from standaloneFunctions import getDestinations, getTravelTimes, getTravelPrices
 #existing sql, we delete existing data here, and generate new below
-conn = sqlite3.connect("database\\dataset.db")
+conn = sqlite3.connect("database/dataset.db")
 cursor = conn.cursor()
 cursor.execute("DELETE FROM routInfo")
 conn.commit()
